@@ -15,7 +15,7 @@ Portfolio of single-cell analysis data processed using Python and visualized usi
   - [ktr.py](#ktrpy)
   - [image_output.py](#image_outputpy)
 
-## Introduction
+## Summary
 This project showcases a portfolio of single-cell analysis data derived from high-content imaging experiments. The data is processed using Python-based automated pipelines and analyzed/visualized using R.
 
 ## Pipeline Workflow
