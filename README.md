@@ -46,20 +46,20 @@ Front end of the pipeline. All specifications are input here.
 Backbone of the pipeline that gets called in ANALYSE_IMAGES.pynb. Contains the function `process_images`, which calls all other functions.
 
 ### timekeeping.py
-Handles logging and performance tracking of pipeline execution times.
+Handles logging and performance tracking of pipeline execution times. Outputs a string that can be printed througout the pipeline to accurately monitor individual steps of the pipeline.
 
 ### file_management.py
 Manages file input/output operations, including directory handling and image metadata.
 
 ### image_processing.py
-Contains image preprocessing functions such as filtering, segmentation, and background correction.
+Contains image processing functions such as segmentation and background correction.
 
 ### measure_nuclei.py
-Quantifies nuclear morphology, intensity, and other relevant single-cell metrics.
+Quantifies features such as morphology and signal intensity for each identified cell.
 
 ### ktr.py
-Analyzes kinase translocation reporter (KTR) data to extract dynamic signaling information.
+The ktr module is only used for cells containing a kinase translocation reporter system such as DHB (DNA Helicase B) reporter to measure CDK2 activity. It handles cytoplasmic segmentation and the calculation of cytoplasmic/nuclear ratio per cell.
 
 ### image_output.py
-Generates processed image outputs, overlays, and summary visualizations.
+Generates annotated output images for troubleshooting and traning of machine learning models.
 
