@@ -3,11 +3,17 @@ Timekeeping toolbox | David Cullen | Jones Lab 2024
 """
 import time
 def current_time():
-    current_time = time.time()  # Use a different variable name
-    return current_time
+    """
+    Extracts the current time.
+    """
+    return time.time()
 
 from datetime import datetime, timedelta
 def get_eta_string(duration_left: float) -> str:
+
+    """
+    Converts the current time into a usable string that can be passed to the progress function.
+    """
     eta = datetime.now() + timedelta(seconds=duration_left)
     if eta.date() == datetime.now().date():
         eta_str = "today"
