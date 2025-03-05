@@ -19,7 +19,23 @@ Portfolio of single-cell analysis data processed using Python and visualized usi
 This project showcases a portfolio of single-cell analysis data derived from high-content imaging experiments. The data is processed using Python-based automated pipelines and analyzed/visualized using R.
 
 ## Pipeline Workflow
-*I will write a description of the image handling, processing, etc.*
+###Managing the pipeline
+The image processing pipeline is run through a computing cluster located at the University of Queensland. Individual functions of the pipeline are stored in several .py files, separated according to purpose. To simplify pipeline operation across users of varying programming knowledge, I used a simple front-end function 'process_images' from which users can specify conditions. These include the use of different microscopes, cell types and the output of example images. 
+
+###File Sorting
+The file names of images produced in QIBC experiments vary between microscopes but contain information on the well, field and channel of each image (e.g. E_6_fld_4_wv_488_Green.tif). I wrote a different regular expression for files from each microscope used in my research, and use groupdict to create a dictionary with each group name as a key. I then sort the files by WV (wavelength) and return a dataframe grouped by Row, Column and Field. Each resulting group contains the names of each channel from a single field in the 96-well plate. 
+
+###Image Reading and Pre-processing
+Each group of images is read and assembled in a list. For ease of use, blank images are added if less than four images are produced per group. 
+
+###Segmentation
+Segmentation is performed using a Cellpose model trained on a set of 150 images to identify in-focus, unclumped nuclei. 
+
+###Cell Measurement
+After segmentation, each individual cell is measured for various characteristics including fluorescence intensity of antibody signals and nuclear morphology. 
+
+###Data Output
+Finally, all the measurements are compiled and outputted as a CSV file for further analysis and visualization. In R, I use dplyr to clean and filter the data then create plots using the ggplots package.
 
 ## Pipeline Components
 
@@ -33,7 +49,7 @@ Backbone of the pipeline that gets called in ANALYSE_IMAGES.pynb. Contains the f
 Handles logging and performance tracking of pipeline execution times.
 
 ### file_management.py
-Manages file input/output operations, including directory handling and metadata storage.
+Manages file input/output operations, including directory handling and image metadata.
 
 ### image_processing.py
 Contains image preprocessing functions such as filtering, segmentation, and background correction.
