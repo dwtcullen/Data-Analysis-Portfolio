@@ -1,5 +1,5 @@
 # Quantitative Image-Based Cytometry
-[dwtcullen.github.io](https://github.com/dwtcullen)
+[dwtcullen.github.io](dwtcullen.github.io)
 
 Portfolio of single-cell analysis data processed using Python and visualized using R.
 
